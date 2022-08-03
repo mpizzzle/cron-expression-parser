@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>cron.parser</groupId>
-  <artifactId>cron.parser</artifactId>
+  <artifactId>cron-expression-parser</artifactId>
   <version>0.1</version>
 
-  <name>cron-expression-parser</name>
+  <name>Cron Expression Parser</name>
   <description>A simple cron.parser.</description>
   <url>http://www.example.com</url>
 
