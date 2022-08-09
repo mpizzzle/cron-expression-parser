@@ -3,13 +3,14 @@ A simple cron expression parser.
 
 Parses cron expressions of the following format:
 
-*   <minute> <hour> <day-of-month> <month> <day-of-week> <command>
-*   `*` (all) specifies that event should happen for every time unit. For example, “*” in the <minute> field means “for every minute.”
-*   `-` (range) determines the value range. For example, “10-11” in the <hour> field means “10th and 11th hours.”
+*   (minute) (hour) (day-of-month) (month) (day-of-week) (command)
 *   `,` (values) specifies multiple values. For example, “MON, WED, FRI“ in <day-of-week> field means on the days “Monday, Wednesday and Friday.”
+*   `-` (range) determines the value range. For example, “10-11” in the <hour> field means “10th and 11th hours.”
 *   `/` (increments) specifies the incremental values. For example, a “5/15” in the <minute> field means at “5, 20, 35 and 50 minutes of an hour.”
+*   `*` (all) specifies that event should happen for every time unit. For example, “*” in the <minute> field means “for every minute.”
 
 For example, given the input argument:
+
 `*/15 0 1,15 * 1-5 /usr/bin/find`
 
 The output should be:
