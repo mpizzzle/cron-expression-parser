@@ -1,25 +1,22 @@
 package cron.parser;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * Hello world!
- *
+ * Responsible for validating and parsing the arguments via {@link CronParser}.
  */
 public class CronParserApp
 {
     private static final int EXPECTED_ARGS = 6;
 
-    public void run(String[] args)
+    public List<String> run(String[] args)
     {
         if (validateArguments(args)) {
-          CronParser parser = new CronParser();
-          List<String> results = parser.parse(args);
-          results.forEach(line -> System.out.println(line));
+          return new CronParser().parse(args);
         }
-        else {
-          System.out.println(unexpectedArgsLengthMessage(args));
-        }
+
+        return Arrays.asList(unexpectedArgsLengthMessage(args));
     }
 
     private static boolean validateArguments(String[] args) {

@@ -1,8 +1,9 @@
 package cron.parser;
 
+import java.util.List;
+
 /**
- * Hello world!
- *
+ * Main entry point for cron expression parser.
  */
 public class App
 {
@@ -10,6 +11,8 @@ public class App
 
     public static void main( String[] args )
     {
-        CPA.run(args);
+        List<String> results = CPA.run(args);
+
+        results.forEach(System.out::println);
     }
 }
