@@ -53,22 +53,22 @@ public class CronParser
   }
 
   private String expand(String arg, int timeField) {
-    String[] c = split(arg, ',');
-    if (c.length > 1) {
-      return Arrays.asList(c).stream().collect(joining(" "));
+    String[] valuesDelimited = split(arg, ',');
+    if (valuesDelimited.length > 1) {
+      return Arrays.asList(valuesDelimited).stream().collect(joining(" "));
     }
 
-    String[] a = split(arg, '-');
-    if (a.length > 1) {
-      return range(parseInt(a[0]), parseInt(a[1]) + 1)
+    String[] valueRange = split(arg, '-');
+    if (valueRange.length > 1) {
+      return range(parseInt(valueRange[0]), parseInt(valueRange[1]) + 1)
         .mapToObj(String::valueOf)
         .collect(joining(" "));
     }
 
-    String[] b = split(arg, '/');
-    if (b.length > 1) {
-      final int start = (!"*".equals(b[0])) ? parseInt(b[0]) : 0;
-      int interval = parseInt(b[1]);
+    String[] valueInterval = split(arg, '/');
+    if (valueInterval.length > 1) {
+      final int start = (!"*".equals(valueInterval[0])) ? parseInt(valueInterval[0]) : 0;
+      int interval = parseInt(valueInterval[1]);
 
       return range(0, timeField / interval)
         .map(i -> start + (i * interval))
@@ -78,7 +78,7 @@ public class CronParser
     }
 
     if (arg.contains("*")) {
-      return range(0, timeField).mapToObj(i -> String.valueOf(i + 1)).collect(joining(" "));
+      return range(1, timeField + 1).mapToObj(String::valueOf).collect(joining(" "));
     }
 
     return arg;
